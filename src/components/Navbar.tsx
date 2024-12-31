@@ -11,7 +11,7 @@ export default function Navbar() {
           alt="Webscout logo"
           loading="lazy"
         />
-        <h4 className="text-2xl font-bold">Webscout</h4>
+        <h4 className="text-lg font-bold md:text-xl lg:text-2xl">Webscout</h4>
       </Link>
     </nav>
   );

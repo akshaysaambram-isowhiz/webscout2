@@ -4,10 +4,10 @@ import Table from "../components/Table";
 
 export default function Home() {
   return (
-    <div className="w-full space-y-4 p-4">
+    <div className="space-y-8 px-8 py-4">
       <Navbar />
       <Header />
-      <Table />
+      <Table route="/data" />
     </div>
   );
 }

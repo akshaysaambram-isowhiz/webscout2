@@ -7,24 +7,27 @@ export default function Header() {
 
   return (
     <div className="space-y-4">
+      <h4 className="text-base text-gray-600 lg:text-lg">
+        Search Program Names...
+      </h4>
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
-        <Input name="Search" placeholder="Search" type="text" label="Sport" />
-        <Input
-          name="Search"
-          placeholder="Search"
-          type="text"
-          label="Project Name"
-        />
-        <Input name="Search" placeholder="Search" type="text" label="SKU" />
-        <Input name="Search" placeholder="Search" type="text" label="Title" />
+        <Input name="Sport" type="text" placeholder="Sport" />
+        <Input name="Project Name" type="text" placeholder="Project Name" />
+        <Input name="SKU" type="text" placeholder="SKU" />
+        <Input name="Title" type="text" placeholder="Title" />
       </div>
       <div className="flex items-center space-x-2">
         <input
           type="checkbox"
+          id="advanced-search"
+          name="Advanced Search"
           className="size-4 accent-yellow-500"
           onChange={(e) => setAdvancedSearchChecked(e.target.checked)}
         />
-        <label className="text-sm font-medium text-gray-700">
+        <label
+          htmlFor="advanced-search"
+          className="text-sm font-medium text-gray-700"
+        >
           Advanced Search
         </label>
       </div>
@@ -38,13 +41,8 @@ export default function Header() {
           maxHeight: advancedSearchChecked ? "100vh" : 0,
         }}
       >
-        <Input name="Search" placeholder="Search" type="text" label="Sport" />
-        <Input
-          name="Search"
-          placeholder="Search"
-          type="text"
-          label="Project Name"
-        />
+        <Input name="Advanced Sport" type="text" placeholder="Sport" />
+        <Input name="Advanced Search" type="text" placeholder="Project Name" />
       </div>
 
       <div className="flex justify-end">
