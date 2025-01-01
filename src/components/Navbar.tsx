@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="pb-2 lg:pb-4">
+    <nav className="pb-2 hover:opacity-75 lg:pb-4">
       <Link to="/" className="flex items-center gap-4">
         <span className="sr-only">Webscout</span>
         <img

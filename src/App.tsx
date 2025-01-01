@@ -14,8 +14,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/data/:id" element={<Data />} />
-          <Route path="/data/analytics/:id" element={<Analytics />} />
+          <Route path="/data/:programName">
+            <Route index element={<Data />} />
+            <Route path="analytics/:website" element={<Analytics />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

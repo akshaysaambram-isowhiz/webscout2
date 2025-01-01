@@ -1,10 +1,22 @@
 import { useNavigate } from "react-router-dom";
 
+import { Card } from "../data/cards";
+
 type TableProps = {
   route?: string;
+  routeParam?: keyof Card;
+  headers: string[];
+  cols: (keyof Card)[];
+  data: Partial<Card>[];
 };
 
-export default function Table({ route = "" }: TableProps) {
+export default function Table({
+  route,
+  routeParam,
+  headers,
+  cols,
+  data,
+}: TableProps) {
   const navigate = useNavigate();
 
   return (
@@ -12,42 +24,33 @@ export default function Table({ route = "" }: TableProps) {
       <table className="table w-full text-left text-sm">
         <thead className="bg-gray-50 text-xs uppercase text-gray-700">
           <tr>
-            <th scope="col" className="px-6 py-3">
-              #
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Job
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Favorite Color
-            </th>
+            {headers.map((header) => (
+              <th scope="col" className="px-6 py-3" key={header}>
+                {header}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          <tr
-            className="transition-colors duration-300 ease-in-out even:bg-yellow-50 hover:bg-yellow-200"
-            onClick={() => navigate(`${route}/1`)}
-          >
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4">Cy Ganderton</td>
-            <td className="px-6 py-4">Quality Control Specialist</td>
-            <td className="px-6 py-4">Blue</td>
-          </tr>
-          <tr className="transition-colors duration-300 ease-in-out even:bg-yellow-50 hover:bg-yellow-200">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4">Cy Ganderton</td>
-            <td className="px-6 py-4">Quality Control Specialist</td>
-            <td className="px-6 py-4">Blue</td>
-          </tr>
-          <tr className="transition-colors duration-300 ease-in-out even:bg-yellow-50 hover:bg-yellow-200">
-            <td className="px-6 py-4">3</td>
-            <td className="px-6 py-4">Cy Ganderton</td>
-            <td className="px-6 py-4">Quality Control Specialist</td>
-            <td className="px-6 py-4">Blue</td>
-          </tr>
+          {data.map((card) => {
+            return (
+              <tr
+                className="transition-colors duration-300 ease-in-out even:bg-yellow-50 hover:bg-yellow-200"
+                onClick={() =>
+                  routeParam && navigate(`${route}/${card[routeParam]}`)
+                }
+                key={card.programName}
+              >
+                {cols.map((col) => (
+                  <td className="px-6 py-4" key={col}>
+                    {["avgPrice", "price"].includes(col)
+                      ? `$ ${card[col]}`
+                      : card[col]}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

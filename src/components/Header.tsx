@@ -12,7 +12,7 @@ export default function Header() {
       </h4>
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
         <Input name="Sport" type="text" placeholder="Sport" />
-        <Input name="Project Name" type="text" placeholder="Project Name" />
+        <Input name="Product Name" type="text" placeholder="Product Name" />
         <Input name="SKU" type="text" placeholder="SKU" />
         <Input name="Title" type="text" placeholder="Title" />
       </div>
@@ -41,8 +41,12 @@ export default function Header() {
           maxHeight: advancedSearchChecked ? "100vh" : 0,
         }}
       >
-        <Input name="Advanced Sport" type="text" placeholder="Sport" />
-        <Input name="Advanced Search" type="text" placeholder="Project Name" />
+        <Input name="Advanced Website" type="text" placeholder="Website" />
+        <Input
+          name="Advanced Product Desc"
+          type="text"
+          placeholder="Product Desc"
+        />
       </div>
 
       <div className="flex justify-end">
