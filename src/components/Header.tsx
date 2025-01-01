@@ -49,7 +49,11 @@ export default function Header() {
         />
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-4">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <Input name="Advanced Start Date" type="date" />
+          <Input name="Advanced End Date" type="date" />
+        </div>
         <button className="rounded bg-yellow-500 px-4 py-2 font-bold text-white transition-all duration-300 ease-in-out hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
           Search
         </button>

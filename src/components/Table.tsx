@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../data/cards";
 
 type TableProps = {
+  className?: string;
   route?: string;
   routeParam?: keyof Card;
   headers: string[];
@@ -11,6 +12,7 @@ type TableProps = {
 };
 
 export default function Table({
+  className,
   route,
   routeParam,
   headers,
@@ -20,7 +22,9 @@ export default function Table({
   const navigate = useNavigate();
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div
+      className={`relative overflow-x-auto shadow-md sm:rounded-lg ${className}`}
+    >
       <table className="table w-full text-left text-sm">
         <thead className="bg-gray-50 text-xs uppercase text-gray-700">
           <tr>

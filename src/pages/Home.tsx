@@ -10,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <Table
+        className="hidden"
         headers={["Program Name", "SKU", "Price"]}
         cols={["programName", "sku", "price"]}
         data={cards}
