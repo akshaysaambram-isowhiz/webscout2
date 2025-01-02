@@ -4,6 +4,8 @@ import {
   ChevronDown,
   ArrowUpDown,
   ExternalLink,
+  ArrowUpRight,
+  ArrowDownRight,
 } from "lucide-react";
 import { useState, useCallback, useMemo } from "react";
 
@@ -28,6 +30,8 @@ type TableProps<T> = {
   onRowClick?: (item: T) => void;
   isLoading?: boolean;
   emptyMessage?: string;
+  actions: boolean;
+  changePercent?: boolean;
 };
 
 export default function Table<T>({
@@ -39,6 +43,8 @@ export default function Table<T>({
   onRowClick,
   isLoading = false,
   emptyMessage = "No data available",
+  actions = true,
+  changePercent = false,
 }: TableProps<T>) {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -170,18 +176,32 @@ export default function Table<T>({
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
               {paginatedData.length > 0 ? (
-                paginatedData.map((item) => (
-                  <tr className="group transition-colors duration-200 hover:bg-yellow-50">
+                paginatedData.map((item, index) => (
+                  <tr
+                    className="group transition-colors duration-200 hover:bg-yellow-50"
+                    onClick={() => handleRowClick(item)}
+                  >
                     {columns.map(({ accessor, formatter, className }) => (
                       <td
                         key={accessor as string}
-                        className={`whitespace-nowrap px-6 py-4 text-sm text-gray-900 ${
+                        className={`relative whitespace-nowrap px-6 py-4 text-sm text-gray-900 ${
                           className || ""
                         }`}
                       >
                         {formatter
                           ? formatter(item[accessor])
                           : (item[accessor] as React.ReactNode)}
+
+                        {changePercent &&
+                          accessor === "price" &&
+                          index % 2 === 0 && (
+                            <ArrowUpRight className="absolute right-[30%] top-1/3 size-4 text-green-500" />
+                          )}
+                        {changePercent &&
+                          accessor === "price" &&
+                          index % 2 === 1 && (
+                            <ArrowDownRight className="absolute right-[30%] top-1/3 size-4 text-red-500" />
+                          )}
                       </td>
                     ))}
                     <td className="py-4">
@@ -195,7 +215,7 @@ export default function Table<T>({
                           }
                         }}
                       >
-                        <span>View History</span>
+                        <span>More Details</span>
                       </button>
                     </td>
                   </tr>

@@ -9,6 +9,7 @@ import {
   Bookmark,
   ChartNoAxesCombined,
   DollarSign,
+  Download,
   RefreshCw,
   Share2,
 } from "lucide-react";
@@ -66,7 +67,10 @@ export default function Data() {
 
         <div className="grid gap-6 md:grid-cols-2">
           <PriceCard price={121.45} title="Average Price" />
-          <PriceCard price={123.45} title="Lowest Available Price" />
+          <PriceCard
+            price={123.45}
+            title="Lowest Price (12/26/2024 in Da Card World)"
+          />
         </div>
 
         {/* <div className="flex space-x-4">
@@ -88,13 +92,22 @@ export default function Data() {
         </div> */}
 
         <div className="space-y-4">
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-gray-900">
-              Price Comparison
-            </h2>
-            <p className="text-sm text-gray-500">
-              Compare prices across different retailers
-            </p>
+          <div className="flex justify-between">
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold text-gray-900">
+                Price Comparison
+              </h2>
+              <p className="text-sm text-gray-500">
+                Compare prices across different retailers
+              </p>
+            </div>
+            <div>
+              <ActionButton
+                icon={<Download className="h-4 w-4" />}
+                label="Export to CSV"
+                onClick={() => {}}
+              />
+            </div>
           </div>
           <Table
             columns={columns}
@@ -102,6 +115,7 @@ export default function Data() {
             route={`/data/${programName}/analytics`}
             routeParam="website"
             pageSize={10}
+            actions={true}
             emptyMessage="No cards found"
           />
         </div>

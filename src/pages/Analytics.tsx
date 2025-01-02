@@ -43,7 +43,7 @@ export default function Analytics() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
         <StatCard
           title="Current Price"
-          value="28.4K"
+          value="$284"
           icon={TrendingUp}
           change="+14.2%"
           changeType="increase"
@@ -126,7 +126,7 @@ export default function Analytics() {
                   Performance Overview
                 </h2>
                 <p className="text-sm text-gray-500">
-                  Monitor your site's performance metrics
+                  Monitor metrics
                 </p>
               </div>
             </div>
@@ -136,6 +136,7 @@ export default function Analytics() {
             data={analytics}
             pageSize={10}
             emptyMessage="No cards found"
+            actions={false}
           />
         </div>
       </div>

@@ -2,32 +2,38 @@ import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 
 import Input from "./Input";
+import DatePicker from "./DatePicker";
 
-type SearchValues = {
+export type SearchValues = {
   sport: string;
   programName: string;
   sku: string;
-  title: string;
+  collection: string;
   website: string;
   productDesc: string;
   date: string;
 };
 
-export default function Header() {
+type HeaderProps = {
+  onSearch: (values: SearchValues) => void;
+};
+
+export default function Header({ onSearch }: HeaderProps) {
   const [advancedSearchChecked, setAdvancedSearchChecked] = useState(false);
   const [searchValues, setSearchValues] = useState<SearchValues>({
     sport: "",
     programName: "",
     sku: "",
-    title: "",
+    collection: "",
     website: "",
     productDesc: "",
-    date: new Date().toISOString().split("T")[0],
+    date: "",
   });
 
   const handleInputChange = (field: keyof SearchValues, value: string) => {
     const newValues = { ...searchValues, [field]: value };
     setSearchValues(newValues);
+    onSearch(newValues);
   };
 
   const handleClear = (field: keyof SearchValues) => {
@@ -39,10 +45,19 @@ export default function Header() {
       sport: "",
       programName: "",
       sku: "",
-      title: "",
+      collection: "",
       website: "",
       productDesc: "",
-      date: new Date().toISOString().split("T")[0],
+      date: "",
+    });
+    onSearch({
+      sport: "",
+      programName: "",
+      sku: "",
+      collection: "",
+      website: "",
+      productDesc: "",
+      date: "",
     });
     setAdvancedSearchChecked(false);
   };
@@ -70,18 +85,11 @@ export default function Header() {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Input
-            name="sport"
-            placeholder="Sport"
-            value={searchValues.sport}
-            onChange={(value) => handleInputChange("sport", value)}
-            onClear={() => handleClear("sport")}
-          />
-          <Input
-            name="programName"
-            placeholder="Program Name"
-            value={searchValues.programName}
-            onChange={(value) => handleInputChange("programName", value)}
-            onClear={() => handleClear("programName")}
+            name="collection"
+            placeholder="Collection"
+            value={searchValues.collection}
+            onChange={(value) => handleInputChange("collection", value)}
+            onClear={() => handleClear("collection")}
           />
           <Input
             name="sku"
@@ -91,11 +99,18 @@ export default function Header() {
             onClear={() => handleClear("sku")}
           />
           <Input
-            name="title"
-            placeholder="Title"
-            value={searchValues.title}
-            onChange={(value) => handleInputChange("title", value)}
-            onClear={() => handleClear("title")}
+            name="programName"
+            placeholder="Program Name"
+            value={searchValues.programName}
+            onChange={(value) => handleInputChange("programName", value)}
+            onClear={() => handleClear("programName")}
+          />
+          <Input
+            name="sport"
+            placeholder="Sport"
+            value={searchValues.sport}
+            onChange={(value) => handleInputChange("sport", value)}
+            onClear={() => handleClear("sport")}
           />
         </div>
 
@@ -140,13 +155,10 @@ export default function Header() {
 
         <div className="flex justify-end space-x-3">
           <div className="">
-            <Input
-              name="Date"
-              type="date"
-              placeholder={"Date"}
-              value={searchValues.date}
-              onChange={(value) => handleInputChange("date", value)}
-              onClear={() => {}}
+            <DatePicker
+              onChange={(value) =>
+                handleInputChange("date", value.toISOString())
+              }
             />
           </div>
           <button
