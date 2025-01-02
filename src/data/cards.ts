@@ -53,6 +53,46 @@ export const cards: Partial<Card>[] = [
     sku: "890123456",
     price: 499.99,
   },
+  {
+    programName: "JOE MILTON AUTH MEMORABILIA",
+    sku: "123456789",
+    price: 99.99,
+  },
+  {
+    programName: "BB PRIZM (2025) TC",
+    sku: "234567890",
+    price: 149.99,
+  },
+  {
+    programName: "ANGEL REESE AUTH MEMORABILIA",
+    sku: "345678901",
+    price: 199.99,
+  },
+  {
+    programName: "DAVID BECKHAM AUTH MEMORABILIA",
+    sku: "456789012",
+    price: 249.99,
+  },
+  {
+    programName: "BB SELECT (2025) TC",
+    sku: "567890123",
+    price: 299.99,
+  },
+  {
+    programName: "WWE PRIZM (2024) TC",
+    sku: "678901234",
+    price: 349.99,
+  },
+  {
+    programName: "BK WNBA DONRUSS (24-25) TC",
+    sku: "789012345",
+    price: 399.99,
+  },
+  {
+    programName: "CHRISTIAN PULISIC AUTH MEMORABILIA",
+    sku: "890123456",
+    price: 499.99,
+  },
 ];
 
 export const data: Partial<Card>[] = [
