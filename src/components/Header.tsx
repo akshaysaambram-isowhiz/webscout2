@@ -10,8 +10,7 @@ type SearchValues = {
   title: string;
   website: string;
   productDesc: string;
-  startDate: string;
-  endDate: string;
+  date: string;
 };
 
 export default function Header() {
@@ -23,8 +22,7 @@ export default function Header() {
     title: "",
     website: "",
     productDesc: "",
-    startDate: "",
-    endDate: "",
+    date: new Date().toISOString().split("T")[0],
   });
 
   const handleInputChange = (field: keyof SearchValues, value: string) => {
@@ -44,8 +42,7 @@ export default function Header() {
       title: "",
       website: "",
       productDesc: "",
-      startDate: "",
-      endDate: "",
+      date: new Date().toISOString().split("T")[0],
     });
     setAdvancedSearchChecked(false);
   };
@@ -142,22 +139,14 @@ export default function Header() {
         </div>
 
         <div className="flex justify-end space-x-3">
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <div className="">
             <Input
-              name="Start Date"
+              name="Date"
               type="date"
-              placeholder={"Start Date"}
-              value={searchValues.startDate}
-              onChange={(value) => handleInputChange("startDate", value)}
-              onClear={() => handleClear("startDate")}
-            />
-            <Input
-              name="End Date"
-              type="date"
-              placeholder={"End Date"}
-              value={searchValues.endDate}
-              onChange={(value) => handleInputChange("endDate", value)}
-              onClear={() => handleClear("endDate")}
+              placeholder={"Date"}
+              value={searchValues.date}
+              onChange={(value) => handleInputChange("date", value)}
+              onClear={() => {}}
             />
           </div>
           <button

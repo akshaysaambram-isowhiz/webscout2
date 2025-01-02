@@ -163,7 +163,7 @@ export default function Table<T>({
                   className="whitespace-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                 >
                   <div className="flex items-center space-x-1">
-                    <span>Actions</span>
+                    <span>Action</span>
                   </div>
                 </th>
               </tr>
@@ -184,7 +184,7 @@ export default function Table<T>({
                           : (item[accessor] as React.ReactNode)}
                       </td>
                     ))}
-                    <td className="px-6 py-4">
+                    <td className="py-4">
                       <button
                         className="inline-flex items-center space-x-1 rounded-lg px-2 py-1 text-sm text-yellow-600"
                         onClick={() => handleRowClick(item)}
@@ -195,8 +195,7 @@ export default function Table<T>({
                           }
                         }}
                       >
-                        <span>Visit</span>
-                        <ExternalLink className="size-4" />
+                        <span>View History</span>
                       </button>
                     </td>
                   </tr>

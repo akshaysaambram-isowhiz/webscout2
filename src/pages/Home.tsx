@@ -16,7 +16,7 @@ export default function Home() {
       accessor: "sku",
     },
     {
-      header: "Price",
+      header: "Current Price",
       accessor: "price",
       formatter: (value) => `$${value.toFixed(2)}`,
       sortable: true,

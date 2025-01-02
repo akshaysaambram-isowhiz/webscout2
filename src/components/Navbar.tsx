@@ -13,6 +13,10 @@ export default function Navbar() {
         />
         <h4 className="text-lg font-bold md:text-xl lg:text-2xl">Webscout</h4>
       </Link>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
     </nav>
   );
 }

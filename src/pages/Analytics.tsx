@@ -40,27 +40,20 @@ export default function Analytics() {
     <div className="space-y-4 px-8 py-4">
       <Navbar />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
         <StatCard
-          title="Total Views"
+          title="Current Price"
           value="28.4K"
-          icon={Users}
+          icon={TrendingUp}
           change="+14.2%"
           changeType="increase"
         />
         <StatCard
-          title="Conversion Rate"
+          title="Average Price"
           value="4.28%"
           icon={TrendingUp}
           change="-2.1%"
           changeType="decrease"
-        />
-        <StatCard
-          title="Active Users"
-          value="1,429"
-          icon={Calendar}
-          change="+8.1%"
-          changeType="increase"
         />
       </div>
 

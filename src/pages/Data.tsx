@@ -23,7 +23,7 @@ export default function Data() {
       sortable: true,
     },
     {
-      header: "Price",
+      header: "Current Price",
       accessor: "price",
       formatter: (value) => `$${value.toFixed(2)}`,
       sortable: true,
@@ -47,7 +47,7 @@ export default function Data() {
               <h4 className="text-base">Program Name</h4>
               <p className="text-sm font-bold lg:text-xl">{programName}</p>
             </div>
-            <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-4 lg:divide-x">
+            <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-3 lg:divide-x">
               <div className="p-2">
                 <h5 className="text-sm">SKU</h5>
                 <p className="text-lg font-bold">234364</p>
@@ -60,16 +60,12 @@ export default function Data() {
                 <h5 className="text-sm">Type</h5>
                 <p className="text-lg font-bold">Case</p>
               </div>
-              <div className="p-2">
-                <h5 className="text-sm">Website</h5>
-                <p className="text-lg font-bold">Da Card World</p>
-              </div>
             </div>
           </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <PriceCard price={121.45} title="Average Market Price" />
+          <PriceCard price={121.45} title="Average Price" />
           <PriceCard price={123.45} title="Lowest Available Price" />
         </div>
 
